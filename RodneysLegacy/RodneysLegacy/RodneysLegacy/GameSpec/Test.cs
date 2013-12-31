@@ -27,10 +27,11 @@ namespace RodneysLegacy
 
             game.Player.Brain = null; //heh...
 
-            /*RLSaveIO.SaveLevel(
-                RLSaveIO.cwd+"/Content/Data/testsave",
-                game.World, game.World.Creatures
-            );*/
+            var a = RLTileMap.GetTilePath(
+                game.World[5, 5],
+                game.World[0, 0]
+            );
+            var b = 1;
         }
     }
 }
