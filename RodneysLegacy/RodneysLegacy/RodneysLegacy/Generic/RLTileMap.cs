@@ -8,12 +8,14 @@ namespace RodneysLegacy
     class RLTileMap
     {
         RLTile[,] map;
+        public int ID;
         public int Width;
         public int Height;
 
         public RLTileMap(int _w, int _h)
         {
             map = new RLTile[_w, _h];
+            ID = -1;
             Width = _w;
             Height = _h;
 
