@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,6 +11,7 @@ namespace RodneysLegacy
         public List<IEvent> EventQueue;
         public List<IEventListener> EventListeners;
         public RenderTarget2D Render;
+        public Random Random;
 
         public RLCreature Player;
         PlayerInput playerInput;
@@ -24,7 +26,9 @@ namespace RodneysLegacy
             EventQueue = new List<IEvent>();
             EventListeners = new List<IEventListener>();
 
-            Player = new RLCreature();
+            Random = new Random();
+
+            //Player = new RLCreature();
             playerInput = new PlayerInput(this);
 
             log = new List<string>();
@@ -42,6 +46,8 @@ namespace RodneysLegacy
             if (playerInput.Handle())
             {
                 //run all brains here
+                foreach(RLCreature _c in World.Creatures)
+                    if(_c.Brain != null) _c.Brain.Think();
                 process();
             }
         }

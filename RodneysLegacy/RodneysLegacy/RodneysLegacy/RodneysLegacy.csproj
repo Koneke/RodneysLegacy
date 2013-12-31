@@ -111,6 +111,7 @@
     <Compile Include="GameSpec\MoveEvent.cs" />
     <Compile Include="GameSpec\Res.cs" />
     <Compile Include="GameSpec\Test.cs" />
+    <Compile Include="Generic\RLBrain.cs" />
     <Compile Include="Generic\RLSaveIO.cs" />
     <Compile Include="Generic\RLTileMap.cs" />
     <Compile Include="PlayerInput.cs" />

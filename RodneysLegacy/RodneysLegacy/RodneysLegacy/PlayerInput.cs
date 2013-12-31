@@ -49,6 +49,7 @@ namespace RodneysLegacy
                             )
                         );
                         _result = true;
+                        break;
                     }
                 }
             }

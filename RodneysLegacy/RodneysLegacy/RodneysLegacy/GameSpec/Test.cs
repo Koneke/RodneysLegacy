@@ -7,13 +7,6 @@ namespace RodneysLegacy
     {
         public Test(RLGame game)
         {
-            game.Player.Texture = "man";
-            RLTile.Move(
-                game.Player,
-                null, //from nowhere since it's a spawn
-                game.World[5, 5]
-            );
-
             game.EventListeners.Add(
                 new MoveEventListener()
             );
@@ -21,8 +14,17 @@ namespace RodneysLegacy
             SavedLevel _level = 
                 RLSaveIO.LoadLevel("foo");
             game.World = _level.TileMap;
+
             game.Player = _level.Creatures.Find(
                 x => x.ID == 0);
+
+            game.World.Creatures = _level.Creatures;
+            foreach (RLCreature _c in game.World.Creatures)
+            {
+                _c.Brain = new RLBrain(_c, game);
+            }
+
+            game.Player.Brain = null; //heh...
         }
     }
 }

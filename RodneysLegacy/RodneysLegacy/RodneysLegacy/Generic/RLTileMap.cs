@@ -11,6 +11,7 @@ namespace RodneysLegacy
         public int ID;
         public int Width;
         public int Height;
+        public List<RLCreature> Creatures;
 
         public RLTileMap(int _w, int _h)
         {
@@ -18,6 +19,7 @@ namespace RodneysLegacy
             ID = -1;
             Width = _w;
             Height = _h;
+            Creatures = new List<RLCreature>();
 
             //initialize
             for (int _x = 0; _x < _w; _x++)

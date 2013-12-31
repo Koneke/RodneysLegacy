@@ -37,6 +37,7 @@ namespace RodneysLegacy
                "7,4;0;0,1",
                "#Creatures",
                "0;0;man;5,5",
+               "1;0;man;9,5"
             };
 
             SavedLevel _sl = new SavedLevel();
