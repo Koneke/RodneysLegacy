@@ -86,6 +86,49 @@ namespace RodneysLegacy
                         Color.White
                     );
 
+                    #region walls
+                    bool _w = World[_x, _y].West;
+                    bool _n = World[_x, _y].North;
+
+                    Vector2 _wallSource = new Vector2(
+                        _n ? GameVars.TileSize : (_w ? 1 : 0),
+                        _w ? GameVars.TileSize : (_n ? 1 : 0)
+                    );
+
+                    //looks hackish, but is to avoid the missing pixel
+                    //on the 8w/4n corner if x,y does not have walls
+                    if (!(_w || _n) && _x > 0 && _y > 0)
+                    {
+                        if (World[_x, _y][8].West &&
+                            World[_x, _y][4].North)
+                        {
+                            _wallSource.X = 1;
+                            _wallSource.Y = 1;
+                        }
+                    }
+
+                    spriteBatch.Draw(
+                        Res.Textures["grid"],
+                        new Rectangle(
+                            _x * GameVars.TileSize,
+                            _y * GameVars.TileSize,
+                            //_n ? GameVars.TileSize : (_w ? 1 : 0),
+                            //_w ? GameVars.TileSize : (_n ? 1 : 0)
+                            (int)_wallSource.X,
+                            (int)_wallSource.Y
+                        ),
+                        new Rectangle(
+                            0,
+                            0,
+                            //_n ? GameVars.TileSize : (_w ? 1 : 0),
+                            //_w ? GameVars.TileSize : (_n ? 1 : 0)
+                            (int)_wallSource.X,
+                            (int)_wallSource.Y
+                        ),
+                        Color.Black
+                    );
+                    #endregion
+
                     if (World[_x, _y].Creature != null)
                     {
                         spriteBatch.Draw(
@@ -160,7 +203,6 @@ namespace RodneysLegacy
             spriteBatch.DrawString(
                 Res.Fonts["logfont"],
                 _statline,
-                //Vector2.Zero,
                 _position,
                 Color.White
             );

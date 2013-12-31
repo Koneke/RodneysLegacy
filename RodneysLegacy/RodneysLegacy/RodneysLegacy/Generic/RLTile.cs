@@ -29,6 +29,7 @@ namespace RodneysLegacy
                     case 3: return map[x + 1, y + 1];
 
                     case 4: return map[x - 1, y];
+                    case 5: return this;
                     case 6: return map[x + 1, y];
 
                     case 7: return map[x - 1, y - 1];
@@ -42,21 +43,28 @@ namespace RodneysLegacy
 
         public bool Walkable(int _direction)
         {
-            RLTile _target = this[_direction];
-            if (_target == null) return false;
+            if (this[_direction] == null) return false;
 
             switch (_direction)
             {
-                case 1: return (!_target.North || !West);
-                case 2: return !_target.North;
-                case 3: return (!_target.North || !_target.West);
+                case 1: return
+                    (!this[1].North && !this[5].West) ||
+                    (!this[2].North && !this[2].West);
+                case 2: return !this[2].North;
+                case 3: return
+                    (!this[2].North && !this[3].West) ||
+                    (!this[3].North && !this[6].West);
 
-                case 4: return !West;
-                case 6: return !_target.West;
+                case 4: return !this[5].West;
+                case 6: return !this[6].West;
 
-                case 7: return (!North || !West);
-                case 8: return !North;
-                case 9: return (!North || !_target.West);
+                case 7: return
+                    (!this[5].North && !this[8].West) ||
+                    (!this[4].North && !this[5].West);
+                case 8: return !this[5].North;
+                case 9: return
+                    (!this[5].North && !this[9].West) ||
+                    (!this[6].North && !this[6].West);
 
                 default: return false;
             }

@@ -30,20 +30,10 @@ namespace RodneysLegacy
                     .FindAll(x => x is MoveEvent)
             ) {
                 MoveEvent _me = _e as MoveEvent;
-
-                //if (!_me.Destination.Solid)
-                //if(true)
-                /*if(_me.Source.Walkable(_me.Destination))
-                {*/
-                //we are just staright up assuming that this move is OK here.
-                //monsters are not going to take any impossible routes,
-                //and the player walk checking is done in the input.
-                //not 100% satisfactory, but it works.
                 RLTile.Move(
                     _me.Actor,
                     _me.Source,
                     _me.Destination);
-                //}
             }
         }
     }

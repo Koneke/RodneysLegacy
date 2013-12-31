@@ -9,7 +9,7 @@ namespace RodneysLegacy
     {
         public static int TileSize = 16;
         public static int ScreenWidth = 16; //in tiles
-        public static int ScreenHeight = 9; //-\\-
+        public static int ScreenHeight = 9; //same
         public static int WindowWidth;
         public static int WindowHeight;
     }
