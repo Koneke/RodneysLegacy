@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameSpec\ChaserBrain.cs" />
     <Compile Include="GameSpec\GameVars.cs" />
     <Compile Include="GameSpec\MoveEvent.cs" />
     <Compile Include="GameSpec\Res.cs" />

@@ -90,8 +90,11 @@ namespace RodneysLegacy
                 for (int _i = 1; _i <= 9; _i++)
                 {
                     if (_i == 5) continue;
-                    if (_current.Tile[_i] == _destination)
-                    {
+                    if (
+                        _current.Tile[_i] == _destination &&
+                        //TRUE FOR DISREGARD
+                        _current.Tile.Walkable(_i, true)
+                    ) {
                         _pathFound = true;
                         while (_current.Parent != null)
                         {
@@ -99,17 +102,6 @@ namespace RodneysLegacy
                             _current = _current.Parent;
                         }
                         List<PathNode> _reversePath = new List<PathNode>();
-                        /*for (int _n = _path.Count-1; _n >= 0; _n--)
-                        {
-                            _reversePath.Add(
-                                new PathNode(
-                                    _path[_n],
-                                    10 - _path[_n]
-                                        .ParentDirection
-                                )
-                            );
-                        }
-                        _reversePath.Add(_current);*/
                         for (int _n = 0; _n < _path.Count; _n++)
                         {
                             _reversePath.Insert(0, _path[_n]);

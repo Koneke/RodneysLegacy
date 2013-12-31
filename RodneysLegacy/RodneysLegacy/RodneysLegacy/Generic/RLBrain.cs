@@ -7,8 +7,8 @@ namespace RodneysLegacy
 {
     class RLBrain
     {
-        RLCreature myDude;
-        RLGame game;
+        protected RLCreature myDude;
+        protected RLGame game;
 
         public RLBrain(RLCreature _myDude) : this(_myDude, null) { }
         public RLBrain(

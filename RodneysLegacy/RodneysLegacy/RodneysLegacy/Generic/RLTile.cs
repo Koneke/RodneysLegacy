@@ -41,11 +41,11 @@ namespace RodneysLegacy
             }
         }
 
-        public bool Walkable(int _direction)
+        public bool Walkable(int _direction, bool _disregard = false)
         {
             if (this[_direction] == null) return false;
             //don't overwrite other creatures....
-            if (this[_direction].Creature != null) return false;
+            if (this[_direction].Creature != null && !_disregard) return false;
 
             switch (_direction)
             {

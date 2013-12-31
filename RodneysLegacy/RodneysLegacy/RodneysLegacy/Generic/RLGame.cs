@@ -38,8 +38,7 @@ namespace RodneysLegacy
 
             log = new List<string>();
             Log("foo");
-            Log("can't jolly well fucken do that, mate");
-            Log("video games video games video games video games video games video games video games video games video games video games video games video games video games");
+            Log("bar");
 
             //dbg
             Test _test = new Test(this);
@@ -183,6 +182,8 @@ namespace RodneysLegacy
             for (int _i = 0; _i < 3; _i++)
             {
                 _string = log.Count - _i > 0 ? log[(log.Count - 1) - _i] : "";
+                if(_string == "") continue;
+
                 _string = Utility.WrapText(
                     Res.Fonts["logfont"], _string, GameVars.WindowWidth);
 
@@ -207,7 +208,6 @@ namespace RodneysLegacy
                     _position,
                     Color.White
                 );
-
             }
             #endregion
             #region drawstatline
