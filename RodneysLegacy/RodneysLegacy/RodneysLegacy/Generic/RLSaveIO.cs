@@ -16,6 +16,33 @@ namespace RodneysLegacy
 
     class RLSaveIO
     {
+        public static List<string> SaveLevel(
+            string _path,
+            RLTileMap _tileMap,
+            List<RLCreature> _creatures
+        ) {
+            List<string> _level = new List<string>();
+
+            _level.Add("#Tilemaps");
+            _level.Add(_tileMap.CreateSaveString());
+
+            _level.Add("#Tiles");
+            for (int _x = 0; _x < _tileMap.Width; _x++)
+            {
+                for (int _y = 0; _y < _tileMap.Width; _y++)
+                {
+                    if (_tileMap[_x, _y] != null)
+                        _level.Add(_tileMap[_x, _y].CreateSaveString());
+                }
+            }
+
+            _level.Add("#Creatures");
+            foreach (RLCreature _c in _creatures)
+                _level.Add(_c.CreateSaveString());
+
+            return _level;
+        }
+
         public static SavedLevel LoadLevel(string _path)
         {
             //for now, any tilemap after the first found in file

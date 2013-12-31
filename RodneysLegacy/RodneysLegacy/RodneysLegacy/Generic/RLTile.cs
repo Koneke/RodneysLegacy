@@ -7,9 +7,9 @@ namespace RodneysLegacy
 {
     class RLTile
     {
-        RLTileMap map;
-        int x;
-        int y;
+        public RLTileMap Map;
+        public int X;
+        public int Y;
 
         public RLCreature Creature;
         public string Texture;
@@ -24,17 +24,17 @@ namespace RodneysLegacy
             {
                 switch (_direction)
                 {
-                    case 1: return map[x - 1, y + 1];
-                    case 2: return map[x, y + 1];
-                    case 3: return map[x + 1, y + 1];
+                    case 1: return Map[X - 1, Y + 1];
+                    case 2: return Map[X, Y + 1];
+                    case 3: return Map[X + 1, Y + 1];
 
-                    case 4: return map[x - 1, y];
+                    case 4: return Map[X - 1, Y];
                     case 5: return this;
-                    case 6: return map[x + 1, y];
+                    case 6: return Map[X + 1, Y];
 
-                    case 7: return map[x - 1, y - 1];
-                    case 8: return map[x, y - 1];
-                    case 9: return map[x + 1, y - 1];
+                    case 7: return Map[X - 1, Y - 1];
+                    case 8: return Map[X, Y - 1];
+                    case 9: return Map[X + 1, Y - 1];
 
                     default: return null;
                 }
@@ -77,9 +77,18 @@ namespace RodneysLegacy
             int _x,
             int _y
         ) {
-            map = _map;
-            x = _x;
-            y = _y;
+            Map = _map;
+            X = _x;
+            Y = _y;
+        }
+
+        public string CreateSaveString()
+        {
+            return
+                X.ToString() + "," + Y.ToString() + ";" +
+                Map.ID.ToString() + ";" +
+                (North ? "1," : "0,") +
+                (West ? "1" : "0");
         }
 
         public static void Move(

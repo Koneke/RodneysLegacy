@@ -25,6 +25,8 @@ namespace RodneysLegacy
             }
 
             game.Player.Brain = null; //heh...
+
+            RLSaveIO.SaveLevel("", game.World, game.World.Creatures);
         }
     }
 }

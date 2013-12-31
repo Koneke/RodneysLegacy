@@ -12,5 +12,14 @@
             ID = -1;
             Brain = new RLBrain(this);
         }
+
+        public string CreateSaveString()
+        {
+            return
+                ID.ToString()+";"+
+                Tile.Map.ID.ToString()+";"+
+                Texture+";"+
+                Tile.X.ToString()+","+Tile.Y.ToString();
+        }
     }
 }

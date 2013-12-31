@@ -39,5 +39,12 @@ namespace RodneysLegacy
             }
             set { map[_x, _y] = value; }
         }
+
+        public string CreateSaveString()
+        {
+            return
+                ID.ToString() + ";" +
+                Width.ToString() + "," + Height.ToString();
+        }
     }
 }
