@@ -33,5 +33,23 @@ namespace RodneysLegacy
             }
             return sb.ToString();
         }
+
+        public static bool KeypadNeighbour(
+            int _a,
+            int _b
+        ) {
+            switch (_a)
+            {
+                case 1: return _b == 4 || _b == 2;
+                case 2: return _b == 1 || _b == 3;
+                case 3: return _b == 2 || _b == 6;
+                case 6: return _b == 3 || _b == 9;
+                case 9: return _b == 6 || _b == 8;
+                case 8: return _b == 9 || _b == 7;
+                case 7: return _b == 8 || _b == 4;
+                case 4: return _b == 7 || _b == 1;
+            }
+            return false;
+        }
     }
 }

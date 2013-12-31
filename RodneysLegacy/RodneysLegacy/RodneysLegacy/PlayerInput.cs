@@ -38,14 +38,12 @@ namespace RodneysLegacy
                 ) {
                     int _direction = (int)_key - ((int)Keys.NumPad1 - 1);
 
-                    //if (player.Tile[_direction] != null)
                     if(game.Player.Tile.Walkable(_direction))
                     {
                         game.EventQueue.Add(
                             new MoveEvent(
                                 game.Player,
-                                null,
-                                game.Player.Tile[_direction]
+                                _direction
                             )
                         );
                         _result = true;

@@ -124,6 +124,7 @@ namespace RodneysLegacy
             return _sl;
         }
 
+        //move loads to their respective classes, by the createsavestring
         public static RLTileMap LoadTileMap(string _tilemapstring)
         {
             List<string> _elements =
@@ -216,17 +217,20 @@ namespace RodneysLegacy
             int _ID;
             int _mapID;
             int _x, _y;
+            int _facing;
 
             Int32.TryParse(_elements[0], out _ID);
             Int32.TryParse(_elements[1], out _mapID);
             Int32.TryParse(_coord[0], out _x);
             Int32.TryParse(_coord[1], out _y);
+            Int32.TryParse(_elements[4], out _facing);
 
             _return = new RLCreature();
             _return.ID = _ID;
             _return.Texture = _elements[2];
             _return.Tile = _tilemaps[_mapID][_x, _y];
             _return.Tile.Creature = _return;
+            _return.Facing = _facing;
 
             return _return;
         }

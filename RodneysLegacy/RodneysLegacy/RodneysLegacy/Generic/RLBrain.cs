@@ -32,8 +32,7 @@ namespace RodneysLegacy
             game.EventQueue.Add(
                 new MoveEvent(
                     myDude,
-                    myDude.Tile,
-                    myDude.Tile[_direction]
+                    _direction
                 )
             );
         }

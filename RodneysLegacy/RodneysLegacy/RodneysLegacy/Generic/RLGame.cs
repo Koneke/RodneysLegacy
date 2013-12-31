@@ -89,20 +89,31 @@ namespace RodneysLegacy
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            //test fov stuff
+
+            bool[,] _vismap =
+                new bool[GameVars.ScreenWidth, GameVars.ScreenHeight];
+
+            //Viswalker _vw = new Viswalker(new List<int>() { 7, 8, 9 } );
+            Viswalker _vw = new Viswalker(Player.Facing);
+            _vw.Tile = Player.Tile;
+            _vw.Walk();
+            var a = _vw.Visible();
+
             spriteBatch.Begin();
             for (int _x = 0; _x < World.Width; _x++)
             {
                 for (int _y = 0; _y < World.Height; _y++)
                 {
                     spriteBatch.Draw(
-                        Res.Textures[World[_x, _y].Texture ?? "grid"],
+                        Res.Textures[World[_x, _y].Texture ?? "blank"],
                         new Rectangle(
                             _x * GameVars.TileSize,
                             _y * GameVars.TileSize,
                             GameVars.TileSize,
                             GameVars.TileSize
                         ),
-                        Color.White
+                        a.Contains(World[_x, _y]) ? Color.White : Color.Blue
                     );
 
                     #region walls

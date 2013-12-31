@@ -6,6 +6,7 @@
         public RLBrain Brain;
         public RLTile Tile; //where am i
         public string Texture; //key in the textures dict
+        public int Facing;
 
         public RLCreature()
         {
@@ -19,7 +20,9 @@
                 ID.ToString()+";"+
                 Tile.Map.ID.ToString()+";"+
                 Texture+";"+
-                Tile.X.ToString()+","+Tile.Y.ToString();
+                Tile.X.ToString()+","+Tile.Y.ToString()+";"+
+                Facing.ToString()
+                ;
         }
     }
 }

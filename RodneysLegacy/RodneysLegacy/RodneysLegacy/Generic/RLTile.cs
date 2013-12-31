@@ -84,6 +84,7 @@ namespace RodneysLegacy
 
         public string CreateSaveString()
         {
+            //add texture
             return
                 X.ToString() + "," + Y.ToString() + ";" +
                 Map.ID.ToString() + ";" +

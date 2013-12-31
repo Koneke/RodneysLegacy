@@ -60,7 +60,7 @@ namespace RodneysLegacy
             return _return;
         }
 
-        static List<PathNode> GetPath(
+        public static List<PathNode> GetPath(
             RLTile _start,
             RLTile _destination)
         {

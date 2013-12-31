@@ -6,16 +6,16 @@ namespace RodneysLegacy
     {
         public RLCreature Actor;
         public RLTile Source;
-        public RLTile Destination;
+        public int Direction;
 
         public MoveEvent(
             RLCreature _actor,
-            RLTile _source,
-            RLTile _destination
+            int _direction,
+            RLTile _source = null
         ) {
             Actor = _actor;
             Source = _source ?? _actor.Tile;
-            Destination = _destination;
+            Direction = _direction;
         }
     }
 
@@ -33,7 +33,9 @@ namespace RodneysLegacy
                 RLTile.Move(
                     _me.Actor,
                     _me.Source,
-                    _me.Destination);
+                    _me.Source[_me.Direction]
+                );
+                _me.Actor.Facing = _me.Direction;
             }
         }
     }

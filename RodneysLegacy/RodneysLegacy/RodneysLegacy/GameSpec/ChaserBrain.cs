@@ -14,7 +14,7 @@ namespace RodneysLegacy
 
         public override void Think()
         {
-            List<RLTile> _path = RLTileMap.GetTilePath(
+            List<PathNode> _path = RLTileMap.GetPath(
                 myDude.Tile,
                 game.Player.Tile);
             if (_path.Count > 0)
@@ -22,8 +22,7 @@ namespace RodneysLegacy
                 game.EventQueue.Add(
                     new MoveEvent(
                         myDude,
-                        null,
-                        _path[0]
+                        _path[0].ParentDirection.Value
                     )
                 );
             }
