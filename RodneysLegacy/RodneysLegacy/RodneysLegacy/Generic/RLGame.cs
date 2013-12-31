@@ -25,7 +25,7 @@ namespace RodneysLegacy
             EventListeners = new List<IEventListener>();
 
             Player = new RLCreature();
-            playerInput = new PlayerInput(this, Player);
+            playerInput = new PlayerInput(this);
 
             log = new List<string>();
             Log("foo");

@@ -21,6 +21,8 @@ namespace RodneysLegacy
             SavedLevel _level = 
                 RLSaveIO.LoadLevel("foo");
             game.World = _level.TileMap;
+            game.Player = _level.Creatures.Find(
+                x => x.ID == 0);
         }
     }
 }

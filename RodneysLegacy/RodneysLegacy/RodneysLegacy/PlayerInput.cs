@@ -9,14 +9,14 @@ namespace RodneysLegacy
     {
         KeyboardState oks;
         RLGame game;
-        RLCreature player;
+        //RLCreature player;
 
         public PlayerInput(
-            RLGame _game,
-            RLCreature _player
+            RLGame _game
+            //RLCreature _player
         ) {
             game = _game;
-            player = _player;
+            //player = _player;
         }
 
         //returns whether or not anything was done
@@ -39,13 +39,13 @@ namespace RodneysLegacy
                     int _direction = (int)_key - ((int)Keys.NumPad1 - 1);
 
                     //if (player.Tile[_direction] != null)
-                    if(player.Tile.Walkable(_direction))
+                    if(game.Player.Tile.Walkable(_direction))
                     {
                         game.EventQueue.Add(
                             new MoveEvent(
-                                player,
+                                game.Player,
                                 null,
-                                player.Tile[_direction]
+                                game.Player.Tile[_direction]
                             )
                         );
                         _result = true;
