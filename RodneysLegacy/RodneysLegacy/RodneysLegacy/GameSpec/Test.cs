@@ -12,7 +12,8 @@ namespace RodneysLegacy
             );
 
             SavedLevel _level = 
-                RLSaveIO.LoadLevel("foo");
+                RLSaveIO.LoadLevel(
+                RLSaveIO.cwd+"/Content/Data/testsave");
             game.World = _level.TileMap;
 
             game.Player = _level.Creatures.Find(
@@ -26,7 +27,10 @@ namespace RodneysLegacy
 
             game.Player.Brain = null; //heh...
 
-            RLSaveIO.SaveLevel("", game.World, game.World.Creatures);
+            /*RLSaveIO.SaveLevel(
+                RLSaveIO.cwd+"/Content/Data/testsave",
+                game.World, game.World.Creatures
+            );*/
         }
     }
 }

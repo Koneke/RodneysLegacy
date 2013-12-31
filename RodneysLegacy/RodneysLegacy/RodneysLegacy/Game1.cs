@@ -55,6 +55,7 @@ namespace RodneysLegacy
         protected override void Update(GameTime gameTime)
         {
             Game.Input();
+            if (Game.Quit) this.Exit();
             base.Update(gameTime);
         }
 

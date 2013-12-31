@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace RodneysLegacy
@@ -12,6 +13,7 @@ namespace RodneysLegacy
         public List<IEventListener> EventListeners;
         public RenderTarget2D Render;
         public Random Random;
+        public bool Quit;
 
         public RLCreature Player;
         PlayerInput playerInput;
@@ -27,6 +29,9 @@ namespace RodneysLegacy
             EventListeners = new List<IEventListener>();
 
             Random = new Random();
+            Quit = false;
+
+            RLSaveIO.Setup();
 
             //Player = new RLCreature();
             playerInput = new PlayerInput(this);
@@ -49,6 +54,15 @@ namespace RodneysLegacy
                 foreach(RLCreature _c in World.Creatures)
                     if(_c.Brain != null) _c.Brain.Think();
                 process();
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                RLSaveIO.SaveLevel(
+                    RLSaveIO.cwd+"/Content/Data/testsave",
+                    World, World.Creatures
+                );
+                Quit = true;
             }
         }
 

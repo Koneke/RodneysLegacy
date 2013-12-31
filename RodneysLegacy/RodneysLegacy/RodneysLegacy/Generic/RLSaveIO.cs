@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,13 @@ namespace RodneysLegacy
 
     class RLSaveIO
     {
+        public static string cwd;
+
+        public static void Setup()
+        {
+            cwd = Directory.GetCurrentDirectory();
+        }
+
         public static List<string> SaveLevel(
             string _path,
             RLTileMap _tileMap,
@@ -40,6 +48,7 @@ namespace RodneysLegacy
             foreach (RLCreature _c in _creatures)
                 _level.Add(_c.CreateSaveString());
 
+            File.WriteAllLines(_path, _level);
             return _level;
         }
 
@@ -50,22 +59,8 @@ namespace RodneysLegacy
             //be of use later, but right now we're not complicating
             //things unecessarily.
 
-            //test file
-            List<string> _file = new List<string>()
-            {
-               "#Tilemaps",
-               "0;16,9",
-               "#Tiles",
-               "5,5;0;1,1",
-               "5,6;0;1,0",
-               "7,5;0;0,1",
-               "6,6;0;1,0",
-               "6,4;0;0,1",
-               "7,4;0;0,1",
-               "#Creatures",
-               "0;0;man;5,5",
-               "1;0;man;9,5"
-            };
+            if (!File.Exists(_path)) throw new FileNotFoundException();
+            List<string> _file = File.ReadAllLines(_path).ToList();
 
             SavedLevel _sl = new SavedLevel();
             List<RLCreature> _levelCreatures = new List<RLCreature>();
